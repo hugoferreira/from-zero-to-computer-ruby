@@ -7,7 +7,7 @@ RSpec.describe "#circuit_helpers" do
   include PropCheck::Generators
 
   it "tests to_bin width" do
-    PropCheck.forall(positive_integer) do |n|
+    PropCheck.forall(tuple(positive_integer, positive_integer)) do |n, width|
       expect(n).to eq to_dec(to_bin(n, width))
     end
   end
